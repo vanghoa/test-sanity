@@ -8,8 +8,6 @@ import {
     PortableText
 } from "../../lib/sanity";
 
-import Image from 'next/image';
-
 const recipeQuery = `*[_type == "recipe" && slug.current == $slug][0]{
     _id,
     name,
@@ -43,6 +41,7 @@ export default function OneRecipe({data, preview}) {
     });
 
     //const {recipe} = data;
+    console.log(recipe);
 
     const [likes, setLikes] = useState(data?.recipe?.likes);
 
