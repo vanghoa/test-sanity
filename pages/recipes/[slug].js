@@ -43,13 +43,13 @@ export default function OneRecipe({data, preview}) {
 
     const {recipe} = data;
     console.log(recipe);
-
-    const [likes, setLikes] = useState(data?.recipe?.likes);
 /*
+    const [likes, setLikes] = useState(data?.recipe?.likes);
+
     if (router.isFallback) {
         return <div>Loading...</div>
     }
-*/
+
     const addLike = async () => {
         const res = await fetch("/api/handle-like", {
             method: "POST",
@@ -61,14 +61,14 @@ export default function OneRecipe({data, preview}) {
 
         setLikes(data.likes);
     }
-
+*/
     return (
         <article className="recipe">
             <h1>{recipe.name}</h1>
 
-            <button className="like-button" onClick={addLike}>
+            {/* <button className="like-button" onClick={addLike}>
                 {likes} yeu
-            </button>
+            </button> */}
 
             <main className="content">
                 <img src={recipe?.mainImage.asset.url} alt={recipe.name}/>
