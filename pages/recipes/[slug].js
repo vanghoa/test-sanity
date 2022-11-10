@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useRouter } from "next/router";
+//import { useRouter } from "next/router";
 
 import { 
     sanityClient, 
@@ -32,7 +32,7 @@ const recipeQuery = `*[_type == "recipe" && slug.current == $slug][0]{
 }`;
 
 export default function OneRecipe({data, preview}) {
-    const router = useRouter();
+    //const router = useRouter();
     /*
     const { data: recipe } = usePreviewSubscription(recipeQuery, {
         params: {slug: data.recipe?.slug.current},
@@ -45,16 +45,16 @@ export default function OneRecipe({data, preview}) {
     console.log(recipe);
 
     const [likes, setLikes] = useState(data?.recipe?.likes);
-
+/*
     if (router.isFallback) {
         return <div>Loading...</div>
     }
-
+*/
     const addLike = async () => {
         const res = await fetch("/api/handle-like", {
             method: "POST",
             body: JSON.stringify({_id: recipe._id}),
-        }).catch((err) => console.log(err))
+        }).catch((err) => {})
 
 
         const data = await res.json();
@@ -105,6 +105,8 @@ export async function getStaticPaths() {
             }
         }`
     );
+    
+    console.log(paths);
     return {
         paths,
         fallback: true
