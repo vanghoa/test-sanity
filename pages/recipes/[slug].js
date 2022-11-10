@@ -33,14 +33,15 @@ const recipeQuery = `*[_type == "recipe" && slug.current == $slug][0]{
 
 export default function OneRecipe({data, preview}) {
     const router = useRouter();
-    
+    /*
     const { data: recipe } = usePreviewSubscription(recipeQuery, {
         params: {slug: data.recipe?.slug.current},
         initialData: data.recipe, //mtfk
         enabled: preview,
     });
+    */
 
-    //const {recipe} = data;
+    const {recipe} = data;
     console.log(recipe);
 
     const [likes, setLikes] = useState(data?.recipe?.likes);
