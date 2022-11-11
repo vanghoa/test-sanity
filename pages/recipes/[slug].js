@@ -1,5 +1,6 @@
 import { useState } from "react";
 //import { useRouter } from "next/router";
+//import Image from 'next/image';
 
 import { 
     sanityClient, 
@@ -40,7 +41,8 @@ export default function OneRecipe({data, preview}) {
         enabled: preview,
     });
     */
-
+    if (!data) return null;
+    
     const {recipe} = data;
     console.log(recipe);
 /*
