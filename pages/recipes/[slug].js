@@ -36,8 +36,8 @@ export default function OneRecipe({data, preview}) {
     const router = useRouter();
     
     const { data: recipe } = usePreviewSubscription(recipeQuery, {
-        params: {slug: data.recipe?.slug.current},
-        initialData: data.recipe, //mtfk
+        params: {slug: data?.recipe?.slug.current},
+        initialData: data?.recipe, //mtfk
         enabled: preview,
     });
 
@@ -108,7 +108,7 @@ export async function getStaticPaths() {
         }`
     );
     
-    console.log(paths);
+    //console.log(paths);
     return {
         paths,
         fallback: true
@@ -118,7 +118,7 @@ export async function getStaticPaths() {
 export async function getStaticProps({params}) {
     const { slug } = params;
     const recipe = await sanityClient.fetch(recipeQuery, { slug });
-    console.log(recipe);
+    //console.log(recipe);
 
     return { props: {data: {recipe}, preview: true}}
 }
