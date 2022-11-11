@@ -120,5 +120,8 @@ export async function getStaticProps({params}) {
     const recipe = await sanityClient.fetch(recipeQuery, { slug });
     //console.log(recipe);
 
-    return { props: {data: {recipe}, preview: true}}
+    return { 
+        props: {data: {recipe}, preview: true},
+        revalidate: 1,
+    }
 }
