@@ -1,5 +1,5 @@
 import { useState } from "react";
-//import { useRouter } from "next/router";
+import { useRouter } from "next/router";
 //import Image from 'next/image';
 
 import { 
@@ -33,20 +33,20 @@ const recipeQuery = `*[_type == "recipe" && slug.current == $slug][0]{
 }`;
 
 export default function OneRecipe({data, preview}) {
-    //const router = useRouter();
-    /*
+    const router = useRouter();
+    
     const { data: recipe } = usePreviewSubscription(recipeQuery, {
         params: {slug: data.recipe?.slug.current},
         initialData: data.recipe, //mtfk
         enabled: preview,
     });
-    */
-    if (!data) return null;
-    
-    const {recipe} = data;
-    console.log(recipe);
-/*
+
+    //const {recipe} = data;
+    //console.log(recipe);
+
     const [likes, setLikes] = useState(data?.recipe?.likes);
+
+    //if (!data) return null;
 
     if (router.isFallback) {
         return <div>Loading...</div>
@@ -63,22 +63,22 @@ export default function OneRecipe({data, preview}) {
 
         setLikes(data.likes);
     }
-*/
+
     return (
         <article className="recipe">
-            <h1>{recipe.name}</h1>
+            <h1>{recipe?.name}</h1>
 
-            {/* <button className="like-button" onClick={addLike}>
+            <button className="like-button" onClick={addLike}>
                 {likes} yeu
-            </button> */}
+            </button>
 
             <main className="content">
-                <img src={recipe?.mainImage.asset.url} alt={recipe.name}/>
+                <img src={recipe?.mainImage.asset.url} alt={recipe?.name}/>
                 <div className="breakdown">
                     <ul className="ingredients">
-                        {recipe.ingredient?.map((ingredient) => { 
+                        {recipe?.ingredient?.map((ingredient) => { 
                             return (
-                        <li key={ingredient._key} className="ingre">
+                        <li key={ingredient?._key} className="ingre">
                             {ingredient?.wholeNum}
                             {" "}
                             {ingredient?.fract}
