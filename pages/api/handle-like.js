@@ -5,7 +5,7 @@ sanityClient.config({
 });
 
 export default async function likeButtonHandler(req, res) {
-    console.log(req.body);
+    console.log(req.body, typeof req.body, 'bu cac');
 
     const { _id } = JSON.parse(req.body)
     const data = await sanityClient
